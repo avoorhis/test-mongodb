@@ -4,8 +4,10 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('express-flash');
 var path = require('path');
+var C = require('./config/db')
 MC = require('mongodb').MongoClient;
-mongoURI = "mongodb://avoorhis:FpecgZT7J4athrA@cluster0-shard-00-00-f1ujl.mongodb.net:27017,cluster0-shard-00-01-f1ujl.mongodb.net:27017,cluster0-shard-00-02-f1ujl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true"
+
+mongoURI = "mongodb://"+C.MONGODB_USER+":"+C.MONGODB_TOKEN+"@cluster0-shard-00-00-f1ujl.mongodb.net:27017,cluster0-shard-00-01-f1ujl.mongodb.net:27017,cluster0-shard-00-02-f1ujl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true"
 
 //const uri  = "mongodb+srv://avoorhis:FpecgZT7J4athrA@cluster0.mongodb.net/test";
 //const uri  = "mongodb+srv://avoorhis:<PASSWORD>@cluster0-f1ujl.mongodb.net/test?retryWrites=true"
@@ -60,6 +62,8 @@ var server = app.listen(port, hostname, function () {
    var host = server.address().address
    var port = server.address().port
    console.log("Example app listening at http://%s:%s", host, port)
+   console.log(mongoURI )
+  
    
 })
 
