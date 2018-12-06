@@ -9,11 +9,6 @@ MC = require('mongodb').MongoClient;
 
 mongoURI = "mongodb://"+C.MONGODB_USER+":"+C.MONGODB_TOKEN+"@cluster0-shard-00-00-f1ujl.mongodb.net:27017,cluster0-shard-00-01-f1ujl.mongodb.net:27017,cluster0-shard-00-02-f1ujl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true"
 
-//const uri  = "mongodb+srv://avoorhis:FpecgZT7J4athrA@cluster0.mongodb.net/test";
-//const uri  = "mongodb+srv://avoorhis:<PASSWORD>@cluster0-f1ujl.mongodb.net/test?retryWrites=true"
-//const uri2 = "mongodb+srv://avoorhis:FpecgZT7J4athrA@cluster0-1q7ty.mongodb.net/test"
-//db = client.test
-//const mongouri = "mongodb://avoorhis:FpecgZT7J4athrA@cluster0-shard-00-00-f1ujl.mongodb.net:27017,cluster0-shard-00-01-f1ujl.mongodb.net:27017,cluster0-shard-00-02-f1ujl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true"
 
 var app = express();
 var sessionStore = new session.MemoryStore;
@@ -40,8 +35,6 @@ const port = process.env.PORT || 3001;
 var router = express.Router();              // get an instance of the express Router
 
 // REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
-//app.use('/api', router);
 var routes    = require('./routes/rts-index'); 
 var admin     = require('./routes/rts-admin');
 app.engine('html', require('ejs').renderFile);
@@ -56,15 +49,27 @@ app.use('/admin', admin);
 //
 ALL_DATA = {}
 //
+var mongoData = require('./models/mongo');
+var all_mongo_data = new mongoData();
+all_mongo_data.get_all_data(function(err, results) {
+    if (err)
+        throw err; // or return an error message, or something
+    else
+    {
+        console.log('XXXXX')
+        console.log(results)
+        console.log(ALL_DATA)
+        
+        
+    }
+})
+//all_mongo_data = new mongo_connect();
 //app.listen(port);
 //console.log('Magic happens on port ' + port);
 var server = app.listen(port, hostname, function () {
    var host = server.address().address
    var port = server.address().port
-   console.log("Example app listening at http://%s:%s", host, port)
-   console.log(mongoURI )
-  
-   
+   console.log("Example app listening at http://%s:%s", host, port);   
 })
 
 //server.listen(port, hostname, () => {
