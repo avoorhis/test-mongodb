@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var flash = require('express-flash');
 var path = require('path');
 MC = require('mongodb').MongoClient;
 mongoURI = "mongodb://avoorhis:FpecgZT7J4athrA@cluster0-shard-00-00-f1ujl.mongodb.net:27017,cluster0-shard-00-01-f1ujl.mongodb.net:27017,cluster0-shard-00-02-f1ujl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true"
@@ -12,13 +14,21 @@ mongoURI = "mongodb://avoorhis:FpecgZT7J4athrA@cluster0-shard-00-00-f1ujl.mongod
 //const mongouri = "mongodb://avoorhis:FpecgZT7J4athrA@cluster0-shard-00-00-f1ujl.mongodb.net:27017,cluster0-shard-00-01-f1ujl.mongodb.net:27017,cluster0-shard-00-02-f1ujl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true"
 
 var app = express();
-
+var sessionStore = new session.MemoryStore;
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use(cookieParser())
+app.use(cookieParser('secret'));
+app.use(session({
+    cookie: { maxAge: 60000 },
+    store: sessionStore,
+    saveUninitialized: true,
+    resave: 'true',
+    secret: 'secret'
+}));
+app.use(flash());
 
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3001;
@@ -32,7 +42,6 @@ var router = express.Router();              // get an instance of the express Ro
 //app.use('/api', router);
 var routes    = require('./routes/rts-index'); 
 var admin     = require('./routes/rts-admin');
-var app       = express();
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 // view engine setup
@@ -43,6 +52,7 @@ app.use('/', routes);
 app.use('/admin', admin);
 //
 //
+ALL_DATA = {}
 //
 //app.listen(port);
 //console.log('Magic happens on port ' + port);

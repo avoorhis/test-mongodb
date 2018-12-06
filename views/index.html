@@ -1,10 +1,27 @@
+<% include header.ejs %>
 <b>HELLO MongoDB</b>
 <br><br>
 
+<% if (messages.success) { %>
+  	<div class="alert_flash_message_success"><%= messages.success %></div>
+<% }else if(messages.fail){ %>
+    <div class="alert_flash_message_fail"><%= messages.fail %></div>
+<% } %>
+  
+  
+<center>
 <table>
 <tr><th>User</th><th>Admin</th></tr>
-<tr><td><a href='list_users_file'>List Users (file)</a></td></td><td>ADMIN: <a href='admin/add_data'>add data to MongoDB</a></td></tr>
-<tr><td><a href='list_users_in_the_cloud'>List Users (mongoDB)</a></td></tr>
-<tr><td><a href='list_projects'>List Project</a></td></tr>
-<tr><td><a href='list_projects'>List Datasets</a></td></tr>
+<tr><td><a href='list_users_file?file=users'>Show users (file)</a></td></td>        <td><a href='admin/add_data_to_mongo'>Add all data to MongoDB</a></td></tr>
+<tr><td><a href='list_users_file?file=all'>Show all data (file)</a></td></td>       <td></td></tr>
+<tr><td><a href='retrieve_mongo_data'>Retrieve Data from mongoDB</a></td>           <td></td></tr>
+<tr><td><a href='list_users'>List Users from mongoDB</a></td>                       <td><a href='admin/delete_all_data'>Delete ALL MongoDB Data</a></td></tr>
+<tr><td><a href='list_projects'>List Project from mongoDB</a></td>                  <td><a href='admin/edit_data'>Edit MongoDB Data</a></td></tr>
+<tr><td><a href='list_datasets'>List Datasets from mongoDB</a></td>                 <td></td></tr>
+<tr><td><a href='show_data'>show</a></td>                 <td></td></tr>
+
 </table>
+</center>
+
+
+<% include footer.ejs %>

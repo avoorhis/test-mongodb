@@ -1,4 +1,14 @@
 <% u = JSON.parse(users) %>
+
+<a href='/'>HOME</a>
+<br><br>
+<% if (messages.success) { %>
+  	<div class="alert_flash_message_success"><%= messages.success %></div>
+<% }else if(messages.fail){ %>
+    <div class="alert_flash_message_fail"><%= messages.fail %></div>
+<% } %>
+
+
 <b>USERS</b>
 <% for(i in u){ %>
     <br><%= u[i].username %>
