@@ -1,0 +1,56 @@
+{
+"user":
+    [
+      {
+          "username" : "mahesh",
+          "password" : "password1",
+          "first_name" : "Samuel",
+          "last_name" : "Dedine",
+          "_id": 11
+       },   
+      {
+          "username" : "suresh",
+          "password" : "password2",
+          "first_name" : "Gloria",
+          "last_name" : "Cabot",
+          "_id": 12
+       },   
+       {
+          "username" : "ramesh",
+          "password" : "password3",
+          "first_name" : "Robert",
+          "last_name" : "Clerk",
+          "_id": 13
+       }
+    ],
+"project":
+    [
+    {"project":"AB_SAND_Bv6","user_id":2,"_id":1001},
+    {"project":"AB_ED_Bv6",  "user_id":2,"_id":1002},
+    {"project":"FAB_SND_Bv6","user_id":3,"_id":1003},
+    {"project":"JU_SND1_Bv6","user_id":1,"_id":1004},
+    {"project":"MNB_OLK_Bv6","user_id":3,"_id":1005},
+    {"project":"MNB_LKI_Bv6","user_id":3,"_id":1006},
+    {"project":"ZEE_UHY_Bv6","user_id":2,"_id":1007}
+    ],
+"dataset":
+    [
+    {"dataset":"ds1","project_id":1002,"_id":101},
+    {"dataset":"ds2","project_id":1002,"_id":102},
+    {"dataset":"ds3","project_id":1002,"_id":103},
+    {"dataset":"ds4","project_id":1002,"_id":104},
+    {"dataset":"dsx1","project_id":1001,"_id":105},
+    {"dataset":"dsx2","project_id":1001,"_id":106},
+    {"dataset":"dsx3","project_id":1001,"_id":107},
+    {"dataset":"dsx4","project_id":1001,"_id":108},
+    {"dataset":"dst1","project_id":1003,"_id":109},
+    {"dataset":"dsy1","project_id":1004,"_id":110},
+    {"dataset":"dsy2","project_id":1004,"_id":111},
+    {"dataset":"dsa1","project_id":1005,"_id":112},
+    {"dataset":"dsb1","project_id":1006,"_id":113},
+    {"dataset":"dsc1","project_id":1007,"_id":114}
+
+    ]
+
+}
+

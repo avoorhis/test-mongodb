@@ -1,0 +1,24 @@
+var ClassUser = user {
+    _id
+    userName : 
+    password: type String
+    lastName
+    firstName
+    projects : [ pid array ]
+    
+}
+
+var ClassProject = project {
+    _id
+    name
+    userId
+    datasets:[ did array ]
+    
+}
+
+var ClassDataset = dataset {
+    _id
+    name
+    projectId
+    
+}
